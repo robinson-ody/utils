@@ -1,6 +1,6 @@
 interface ThousandSeparatorParams {
   numbers: string | number;
-  empty_placeholder: string;
+  empty_placeholder: string | number;
   separator: string;
 }
 
@@ -11,13 +11,15 @@ interface ThousandSeparatorParams {
  * @param {string | number} params.numbers - The number or string to be formatted
  * @param {string} [params.empty_placeholder='-'] - The placeholder to use when the numbers parameter is empty or invalid
  * @param {string} [params.separator='.'] - The separator to use between groups of three digits
- * @returns {string} The formatted number as a string
+ * @returns {number | string} The formatted number or empty placeholder
  */
-const thousand_separator = ({ empty_placeholder = '-', numbers, separator = '.' }: ThousandSeparatorParams): string => {
-  if (!numbers) return empty_placeholder;
-  if (isNaN(Number(numbers))) return empty_placeholder;
+const thousand_separator = ({
+  empty_placeholder = '-',
+  numbers,
+  separator = '.',
+}: ThousandSeparatorParams): string | number => {
+  if (!numbers || isNaN(Number(numbers))) return empty_placeholder;
   let result = '';
-
   const numbersArr = numbers.toString().split('').reverse();
 
   for (let i in numbersArr) {
