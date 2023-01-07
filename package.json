@@ -1,0 +1,30 @@
+{
+  "name": "ody-utils",
+  "version": "1.0.0",
+  "description": "Collection of helper functions.",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/robinson-ody/utils.git"
+  },
+  "keywords": [
+    "utils",
+    "helper"
+  ],
+  "author": "Robinson Ody",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/robinson-ody/utils/issues"
+  },
+  "homepage": "https://github.com/robinson-ody/utils#readme",
+  "dependencies": {
+    "chalk": "^5.2.0",
+    "crypto": "^1.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.18"
+  }
+}
