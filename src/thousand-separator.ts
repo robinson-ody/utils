@@ -1,7 +1,7 @@
 interface ThousandSeparatorParams {
   numbers: string | number;
-  empty_placeholder: string | number;
-  separator: string;
+  empty_placeholder?: string | number;
+  separator?: string;
 }
 
 /**
