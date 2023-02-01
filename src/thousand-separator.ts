@@ -13,7 +13,7 @@ interface ThousandSeparatorParams {
  * @param {string} [params.separator='.'] - The separator to use between groups of three digits
  * @returns {number | string} The formatted number or empty placeholder
  */
-const thousand_separator = ({
+const thousandSeparator = ({
   empty_placeholder = '-',
   numbers,
   separator = '.',
@@ -22,7 +22,7 @@ const thousand_separator = ({
   let result = '';
   const numbersArr = numbers.toString().split('').reverse();
 
-  for (let i in numbersArr) {
+  for (const i in numbersArr) {
     if (i !== '0' && Number(i) % 3 === 0) result = separator + result;
     result = numbersArr[i] + result;
   }
@@ -30,4 +30,4 @@ const thousand_separator = ({
   return result;
 };
 
-export default thousand_separator;
+export default thousandSeparator;

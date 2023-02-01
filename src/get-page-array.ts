@@ -1,49 +1,49 @@
 interface GetPageArrayParams {
-  current_page: number;
-  total_page: number;
+  currentPage: number;
+  totalPage: number;
 }
 
 /**
  * Generates an array of page numbers for pagination
  *
  * @param {GetPageArrayParams} params - The input parameters for the function
- * @param {number} params.current_page - The current page number
- * @param {number} params.total_page - The total number of pages
+ * @param {number} params.currentPage - The current page number
+ * @param {number} params.totalPage - The total number of pages
  * @throws {Error} Will throw an error if either current_page or total_page are missing or invalid
  * @returns {number[]} An array of page numbers
  */
-const get_page_array = ({ current_page, total_page }: GetPageArrayParams): number[] => {
-  if (!current_page || !total_page) throw new Error('Invalid params');
+const getPageArray = ({ currentPage, totalPage }: GetPageArrayParams): number[] => {
+  if (!currentPage || !totalPage) throw new Error('Invalid params');
 
-  const res_arr: number[] = [];
+  const resArr: number[] = [];
 
-  if (total_page < 10) for (let i = 1; i < total_page + 1; i++) res_arr.push(i);
+  if (totalPage < 10) for (let i = 1; i < totalPage + 1; i++) resArr.push(i);
 
-  if (total_page >= 10) {
-    if (current_page - 4 <= 0) res_arr.push(1, 2, 3, 4, 5, 6, 7, 8, 9);
+  if (totalPage >= 10) {
+    if (currentPage - 4 <= 0) resArr.push(1, 2, 3, 4, 5, 6, 7, 8, 9);
 
-    if (current_page + 4 >= total_page) {
-      let i = total_page;
+    if (currentPage + 4 >= totalPage) {
+      let i = totalPage;
 
-      while (res_arr.length < 9) {
-        res_arr.push(i);
+      while (resArr.length < 9) {
+        resArr.push(i);
         i--;
       }
 
-      res_arr.reverse();
+      resArr.reverse();
     }
 
-    if (current_page - 4 > 0 && current_page + 4 < total_page) {
-      let i = current_page - 4;
+    if (currentPage - 4 > 0 && currentPage + 4 < totalPage) {
+      let i = currentPage - 4;
 
-      while (res_arr.length < 9) {
-        res_arr.push(i);
+      while (resArr.length < 9) {
+        resArr.push(i);
         i++;
       }
     }
   }
 
-  return res_arr;
+  return resArr;
 };
 
-export default get_page_array;
+export default getPageArray;

@@ -1,9 +1,9 @@
 /**
- * Removes thousand separators and decimals from a number string
+ * Removes thousand separators and omits decimal places from a number string
  */
-const plain_number = (number: string): number => {
-  if (number.includes('.')) number = number.split('.')[0];
-  return +number.replace(/,/g, '');
+const plainNumber = (inputNumber: string): number => {
+  const number = inputNumber.replace(/[^0-9]/g, '');
+  return Number(number);
 };
 
-export default plain_number;
+export default plainNumber;
