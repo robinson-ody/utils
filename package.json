@@ -30,8 +30,7 @@
   },
   "homepage": "https://github.com/robinson-ody/utils#readme",
   "dependencies": {
-    "chalk": "^4.1.2",
-    "crypto": "^1.0.1"
+    "chalk": "^4.1.2"
   },
   "devDependencies": {
     "@types/jest": "^29.4.0",
