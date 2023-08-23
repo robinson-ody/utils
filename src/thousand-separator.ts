@@ -24,10 +24,8 @@ const thousandSeparator = ({
   if (typeof numbers === 'number') numbers = numbers.toString();
   if (numbers.length < 4) return numbers;
 
-  if (numbers.substring(0, 1) === '-') {
-    numbers = numbers.substring(1);
-    result = '-';
-  }
+  const isNegative = numbers.substring(0, 1) === '-';
+  if (isNegative) numbers = numbers.substring(1);
 
   const numbersArr = numbers.toString().split('').reverse();
 
@@ -36,6 +34,7 @@ const thousandSeparator = ({
     result = numbersArr[i] + result;
   }
 
+  if (isNegative) result = '-' + result;
   return result;
 };
 
