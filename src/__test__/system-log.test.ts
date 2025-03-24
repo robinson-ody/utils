@@ -4,7 +4,7 @@ import { random_chalk } from '../random-chalk';
 // Mock the random_chalk function
 jest.mock('../random-chalk', () => {
   return {
-    random_chalk: jest.fn()
+    random_chalk: jest.fn(),
   };
 });
 
