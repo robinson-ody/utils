@@ -1,12 +1,12 @@
 import { system_log } from '../system-log';
 import { random_chalk } from '../random-chalk';
 
-// Mock the random_chalk module
-jest.mock('../random-chalk', () => ({
-  __esModule: true,
-  random_chalk: jest.fn(),
-  default: jest.fn(),
-}));
+// Mock the random_chalk function
+jest.mock('../random-chalk', () => {
+  return {
+    random_chalk: jest.fn()
+  };
+});
 
 describe('system_log', () => {
   beforeEach(() => {
