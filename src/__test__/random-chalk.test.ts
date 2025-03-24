@@ -1,8 +1,8 @@
-import randomChalk from '../random-chalk';
+import { random_chalk } from '../random-chalk';
 
 it('should print a message with random colors', () => {
   const spy = jest.spyOn(console, 'log');
-  randomChalk('Hello World');
+  random_chalk('Hello World');
   expect(spy).toHaveBeenCalled();
   spy.mockRestore();
 });

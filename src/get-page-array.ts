@@ -1,6 +1,6 @@
 interface GetPageArrayParams {
-  currentPage: number;
-  totalPage: number;
+  page: number;
+  total_page: number;
 }
 
 /**
@@ -12,38 +12,36 @@ interface GetPageArrayParams {
  * @throws {Error} Will throw an error if either current_page or total_page are missing or invalid
  * @returns {number[]} An array of page numbers
  */
-const getPageArray = ({ currentPage, totalPage }: GetPageArrayParams): number[] => {
-  if (!currentPage || !totalPage) throw new Error('Invalid params');
+const get_pagination_array = ({ page, total_page }: GetPageArrayParams): number[] => {
+  if (!page || !total_page) throw new Error('Invalid params');
+  const res_arr: number[] = [];
+  if (total_page < 10) for (let i = 1; i < total_page + 1; i++) res_arr.push(i);
 
-  const resArr: number[] = [];
+  if (total_page >= 10) {
+    if (page - 4 <= 0) res_arr.push(1, 2, 3, 4, 5, 6, 7, 8, 9);
 
-  if (totalPage < 10) for (let i = 1; i < totalPage + 1; i++) resArr.push(i);
+    if (page + 4 >= total_page) {
+      let i = total_page;
 
-  if (totalPage >= 10) {
-    if (currentPage - 4 <= 0) resArr.push(1, 2, 3, 4, 5, 6, 7, 8, 9);
-
-    if (currentPage + 4 >= totalPage) {
-      let i = totalPage;
-
-      while (resArr.length < 9) {
-        resArr.push(i);
+      while (res_arr.length < 9) {
+        res_arr.push(i);
         i--;
       }
 
-      resArr.reverse();
+      res_arr.reverse();
     }
 
-    if (currentPage - 4 > 0 && currentPage + 4 < totalPage) {
-      let i = currentPage - 4;
+    if (page - 4 > 0 && page + 4 < total_page) {
+      let i = page - 4;
 
-      while (resArr.length < 9) {
-        resArr.push(i);
+      while (res_arr.length < 9) {
+        res_arr.push(i);
         i++;
       }
     }
   }
 
-  return resArr;
+  return res_arr;
 };
 
-export default getPageArray;
+export { get_pagination_array };

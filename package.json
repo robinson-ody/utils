@@ -9,11 +9,11 @@
     "build": "tsc",
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "tslint -p tsconfig.json",
-    "prepare": "npm run build",
-    "preversion": "npm run lint",
-    "version": "npm run format && git add -A src",
+    "prepare": "pnpm run build",
+    "preversion": "pnpm run lint",
+    "version": "pnpm run format && git add -A src",
     "postversion": "git push && git push --tags",
-    "prepublishOnly": "npm test && npm run lint"
+    "prepublishOnly": "pnpm test && pnpm run lint"
   },
   "repository": {
     "type": "git",
@@ -30,10 +30,12 @@
   },
   "homepage": "https://github.com/robinson-ody/utils#readme",
   "dependencies": {
-    "chalk": "^4.1.2"
+    "chalk": "^4.1.2",
+    "luxon": "^3.5.0"
   },
   "devDependencies": {
     "@types/jest": "^29.4.0",
+    "@types/luxon": "^3.4.2",
     "@types/node": "^18.11.18",
     "jest": "^29.4.1",
     "prettier": "^2.8.3",

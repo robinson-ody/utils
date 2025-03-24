@@ -1,31 +1,20 @@
 import chalk from 'chalk';
 
-const randomColor = () => Math.floor(Math.random() * 255);
+const random_light_color = () => Math.floor(Math.random() * 127 + 127);
 
-const randomRGB = (str: any) => {
+const random_light_rgb = (str: any) => {
   if (typeof str !== 'string') str = JSON.stringify(str, null, 2);
-  return chalk.bold.rgb(randomColor(), randomColor(), randomColor())(str);
+  return chalk.bold.rgb(random_light_color(), random_light_color(), random_light_color())(str);
 };
 
 /**
- * Prints one or more messages to the console with randomly generated colors.
- * This function only recommended for string and object
- * @param messages - One or more messages to print to the console
- * @example
- * ```ts
- * import randomChalk from 'random-chalk';
- * randomChalk('Hello', 'World!');
- * ```
- * @example
- * ```ts
- * import randomChalk from 'random-chalk';
- * randomChalk({ hello: 'world' });
- * ```
+ * Prints one or more messages to the console with randomly generated colors
+ * The colors are light, so they are suitable for dark backgrounds.
  */
-const randomChalk = (...messages: any) => {
+const random_chalk = (...messages: any) => {
   messages.forEach((msg: any) => {
-    console.log(randomRGB(msg));
+    console.log(random_light_rgb(msg));
   });
 };
 
-export default randomChalk;
+export { random_chalk };
