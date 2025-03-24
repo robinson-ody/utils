@@ -1,6 +1,6 @@
 {
   "name": "ody-utils",
-  "version": "2.0.2",
+  "version": "2.1.0",
   "description": "Collection of helper functions.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
