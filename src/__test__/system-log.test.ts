@@ -26,7 +26,7 @@ describe('system_log', () => {
     // Assert
     expect(random_chalk).toHaveBeenCalledTimes(1);
     expect(random_chalk).toHaveBeenCalledWith(
-      expect.stringMatching(/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2} \| TEST \| Test message$/),
+      expect.stringMatching(/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2} \| system \| TEST \| Test message$/),
     );
   });
 
@@ -43,4 +43,19 @@ describe('system_log', () => {
     // Assert
     expect(random_chalk).toHaveBeenCalledWith(expect.stringContaining('| DEBUG |'));
   });
+});
+
+it('should include the user in the message', () => {
+  // Arrange
+  const log_params = {
+    message: 'Another message',
+    log_key: 'DEBUG',
+    user: 'test_user',
+  };
+
+  // Act
+  system_log(log_params);
+
+  // Assert
+  expect(random_chalk).toHaveBeenCalledWith(expect.stringContaining('| test_user |'));
 });
