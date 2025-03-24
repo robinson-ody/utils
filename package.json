@@ -9,7 +9,7 @@
     "build": "tsc",
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "tslint -p tsconfig.json",
-    "prepare": "pnpm run build",
+    "prepare": "rm -rf lib && pnpm run build",
     "preversion": "pnpm run lint",
     "version": "pnpm run format && git add -A src",
     "postversion": "git push && git push --tags",
